@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_is_perfect - Checks if a tree if perfect.
+ * binary_tree_is_perfect - Checks if a tree is perfect.
  * @tree: Pointer to the head of the tree.
  * Return: 1 if the tree is perfect. Otherwise 0.
  */
@@ -10,10 +10,14 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 {
 	size_t modul, m;
 
-	if (!tree)
+	if (tree == NULL)
+	{
 		return (0);
+	}
 	for (m = 0, modul = 1; m <= binary_tree_height(tree); m++)
+	{
 		modul = modul * 2;
+	}
 	return (binary_tree_size(tree) + 1 == modul);
 }
 
@@ -42,7 +46,12 @@ size_t binary_tree_height(const binary_tree_t *tree)
  */
 size_t binary_tree_size(const binary_tree_t *tree)
 {
-	if (!tree)
+	if (tree == NULL)
+	{
 		return (0);
-	return (1 + binary_tree_size(tree->right) + binary_tree_size(tree->left));
+	}
+	else
+	{
+		return (1 + binary_tree_size(tree->right) + binary_tree_size(tree->left));
+	}
 }
